@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>강원태 | Personal Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:#101e3c;
+  --navy2:#1b3157;
+  --blue:#91b9e9;
+  --light:#f2f5fa;
+  --white:#fff;
+  --text:#273650;
+  --muted:#63738b;
+  --gold:#d9bd82;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans KR',sans-serif;
+  background:var(--light);
+  color:var(--text);
+  line-height:1.9;
+  font-size:16px;
+}
+header{
+  background:var(--navy);color:white;
+  padding:20px 8%;
+  display:flex;justify-content:space-between;
+  align-items:center;position:sticky;top:0;z-index:10;
+}
+.food-visual {
+  height: 200px;
+  overflow: hidden;
+  background: #e6edf6;
+}
+
+.food-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.logo{font-size:21px;font-weight:800;letter-spacing:2px}
+nav{display:flex;gap:22px}
+nav a{color:#d4deed;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--blue)}
+
+.hero{
+  background:linear-gradient(125deg,#101e3c,#294773);
+  color:white;min-height:500px;padding:100px 10%;
+  display:flex;align-items:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;width:420px;height:420px;
+  border:1px solid rgba(255,255,255,.13);border-radius:50%;
+  right:8%;top:35px;
+  box-shadow:0 0 0 55px rgba(255,255,255,.025),
+  0 0 0 110px rgba(255,255,255,.025);
+}
+.hero-content{position:relative;z-index:1}
+.eyebrow{color:var(--blue);letter-spacing:4px;font-size:14px;font-weight:700;margin-bottom:22px}
+.hero h1{font-size:clamp(42px,5vw,65px);line-height:1.4;margin-bottom:20px;font-weight:800}
+.hero h1 span{color:var(--blue)}
+.hero p{color:#d0d9e8;font-size:19px}
+.tags{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.tag{border:1px solid rgba(255,255,255,.35);padding:7px 18px;border-radius:30px;font-size:14px}
+
+.container{max-width:1100px;margin:auto;padding:85px 25px}
+.section-title{margin-bottom:35px}
+.section-title small{color:#6689b9;font-size:14px;letter-spacing:3px;font-weight:700}
+.section-title h2{color:var(--navy);font-size:34px;margin-top:7px}
+.section-title p{color:var(--muted);font-size:16px;margin-top:5px}
+
+.profile-grid{display:grid;grid-template-columns:1fr 2fr;gap:25px}
+.profile-card{background:var(--navy);color:white;padding:35px;border-radius:18px}
+.initial{
+  width:90px;height:90px;border-radius:50%;background:#304a70;
+  display:grid;place-items:center;color:#b8d6f7;
+  font-size:34px;font-weight:700;margin-bottom:25px
+}
+.profile-card h3{font-size:28px}
+.profile-card p{color:#c5d2e4;font-size:15px}
+.profile-info{
+  background:white;padding:35px;border-radius:18px;
+  display:flex;flex-direction:column;justify-content:center;gap:20px
+}
+.info-row{display:flex;gap:15px;font-size:16px}
+.info-row strong{width:110px;color:var(--navy)}
+.info-row span{color:var(--muted)}
+
+.about-box{
+  background:white;border-radius:18px;padding:40px;
+  border-left:5px solid #547cac;font-size:17px;color:#53647d
+}
+.about-box strong{color:var(--navy)}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{
+  background:white;border-radius:16px;padding:30px;
+  border:1px solid #e8edf5;transition:.25s
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(16,30,60,.09)}
+.icon{font-size:32px;margin-bottom:13px}
+.card h3{color:var(--navy);font-size:20px;margin-bottom:9px}
+.card p{font-size:16px;color:var(--muted)}
+
+.strength-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.strength{background:var(--navy);color:white;padding:30px 18px;border-radius:16px;text-align:center}
+.strength .icon{font-size:32px}
+.strength h3{font-size:19px;margin:10px 0}
+.strength p{font-size:14px;color:#c2cee0;line-height:1.7}
+
+.experience{background:white;border-radius:18px;padding:35px}
+.experience-item{
+  display:grid;grid-template-columns:55px 1fr;gap:20px;
+  padding:20px 0;border-bottom:1px solid #e9edf3
+}
+.experience-item:last-child{border-bottom:none}
+.exp-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:#eaf0f8;display:grid;place-items:center;font-size:24px
+}
+.experience-item h3{font-size:19px;color:var(--navy)}
+.experience-item p{font-size:16px;color:var(--muted)}
+
+.philosophy{
+  background:linear-gradient(135deg,#e8eef7,#f7f9fc);
+  border-radius:20px;padding:45px;text-align:center;border:1px solid #dce5f0
+}
+.philosophy .quote{font-size:38px;color:#6689b9}
+.philosophy h2{color:var(--navy);font-size:29px;line-height:1.6;margin:10px 0 18px}
+.philosophy p{max-width:750px;margin:auto;font-size:17px;color:#596b83}
+
+.hobbies{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.hobby{background:white;text-align:center;padding:32px 12px;border-radius:16px;transition:.25s}
+.hobby:hover{transform:translateY(-5px)}
+.hobby .icon{font-size:38px}
+.hobby h3{font-size:19px;color:var(--navy);margin-top:10px}
+.hobby p{font-size:14px;color:var(--muted)}
+
+/* Cooking */
+.cooking{
+  background:white;border-radius:20px;padding:35px;
+}
+.cooking-intro{color:var(--muted);font-size:16px;margin-bottom:25px}
+.food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.food-card{
+  background:#f4f6fa;border-radius:15px;overflow:hidden;
+  border:1px solid #e8edf5;
+}
+.food-visual {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  background: #e6edf6;
+}
+
+.food-visual img {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: contain;
+  display: block;
+}
+/* POKEMON */
+.pokemon-section {
+  padding: 90px 0;
+  background: #f2f5fa;
+}
+
+.pokemon-card {
+  max-width: 850px;
+  margin: 35px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(16, 30, 60, 0.08);
+}
+
+.pokemon-image {
+  min-height: 350px;
+  background: #fff7d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.pokemon-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+}
+
+.pokemon-info {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pokemon-info h3 {
+  font-size: 30px;
+  color: var(--navy);
+  margin-bottom: 15px;
+}
+
+.pokemon-info p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.pokemon-label {
+  margin-top: 20px;
+  color: #b58b2a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 750px) {
+  .pokemon-card {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-image {
+    min-height: 280px;
+  }
+
+  .pokemon-info {
+    padding: 30px;
+  }
+}
+.food-info{padding:20px}
+.food-info h3{font-size:19px;color:var(--navy);margin-bottom:5px}
+.food-info p{font-size:14px;color:var(--muted)}
+.food-label{
+  display:inline-block;font-size:12px;color:#53759f;
+  background:#e6edf7;padding:3px 10px;border-radius:20px;
+  margin-top:10px
+}
+
+/* Favorite */
+.favorite{
+  background:linear-gradient(135deg,#101e3c,#263f68);
+  color:white;border-radius:20px;padding:45px;
+  display:grid;grid-template-columns:1fr 1fr;gap:35px;
+  align-items:center;
+}
+.favorite-label{color:var(--blue);font-size:13px;letter-spacing:3px;font-weight:700}
+.favorite h2{font-size:34px;margin:12px 0}
+.favorite h3{color:var(--gold);font-size:20px;margin-bottom:15px}
+.favorite p{color:#d1dced;font-size:16px}
+.favorite-photo{
+  height:350px;border:2px dashed #91b9e9;
+  border-radius:18px;background:rgba(255,255,255,.06);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:20px;overflow:hidden;
+}
+.favorite-photo img{
+  width:100%;height:100%;object-fit:contain;border-radius:14px
+}
+.photo-symbol{font-size:50px;margin-bottom:12px}
+.favorite-photo span{font-size:14px;color:#c8d7eb}
+.favorite-note{font-size:12px!important;color:#9fb4d1!important;margin-top:12px}
+
+/* Goal */
+.goal{
+  background:linear-gradient(135deg,#101e3c,#263f68);
+  color:white;text-align:center;padding:75px 35px;border-radius:20px
+}
+.goal small{color:var(--blue);letter-spacing:4px;font-size:14px}
+.goal h2{font-size:34px;margin:18px 0;line-height:1.6}
+.goal .english{color:var(--gold);font-size:18px;letter-spacing:2px;font-weight:600}
+.goal p{color:#d1dced;font-size:17px;max-width:760px;margin:22px auto 0}
+.goal-keywords{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}
+.goal-keywords span{padding:8px 18px;border:1px solid #8199ba;border-radius:30px;font-size:14px}
+
+footer{background:var(--navy);color:#aebdd1;text-align:center;padding:30px;font-size:14px}
+
+@media(max-width:750px){
+  header{padding:15px 5%;flex-wrap:wrap;gap:12px}
+  nav{gap:12px;flex-wrap:wrap}
+  nav a{font-size:12px}
+  .hero{padding:80px 7%;min-height:430px}
+  .hero::before{right:-220px}
+  .hero h1{font-size:43px}
+  .hero p{font-size:16px}
+  .profile-grid,.favorite{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .strength-grid,.hobbies{grid-template-columns:repeat(2,1fr)}
+  .food-grid{grid-template-columns:1fr}
+  .container{padding:60px 20px}
+  .section-title h2{font-size:29px}
+  .about-box{padding:27px;font-size:16px}
+  .goal{padding:55px 22px}
+  .goal h2{font-size:25px}
+  .philosophy{padding:30px 20px}
+  .philosophy h2{font-size:24px}
+  .favorite{padding:30px 22px}
+  .favorite-photo{height:300px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">WONTAE'S PROFILE.</div>
+  <nav>
+    <a href="#profile">Profile</a>
+    <a href="#about">About</a>
+    <a href="#interests">Interests</a>
+    <a href="#strengths">Strengths</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#favorite">Favorite</a>
+    <a href="#goal">Goal</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">NURSING STUDENT · PERSONAL PORTFOLIO</div>
+    <h1>사람을 이해하고,<br><span>가능성을 연결하는</span><br>강원태입니다.</h1>
+    <p>끊임없이 배우고 도전하며<br>기술과 공감으로 더 나은 간호를 고민합니다.</p>
+    <div class="tags">
+      <span class="tag">Nursing</span>
+      <span class="tag">Empathy</span>
+      <span class="tag">Digital Healthcare</span>
+      <span class="tag">Communication</span>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<!-- PROFILE -->
+<section class="container" id="profile">
+  <div class="section-title">
+    <small>01 · PROFILE</small>
+    <h2>Who I Am</h2>
+    <p>저를 소개합니다.</p>
+  </div>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <div class="initial">강</div>
+      <h3>강원태</h3>
+      <p>Dankook University</p>
+      <p>Department of Nursing · 2nd Year</p>
+    </div>
+    <div class="profile-info">
+      <div class="info-row"><strong>소속</strong><span>단국대학교 간호학과 2학년</span></div>
+      <div class="info-row"><strong>관심 분야</strong><span>간호학, 디지털 콘텐츠, 건강교육</span></div>
+      <div class="info-row"><strong>핵심 역량</strong><span>책임감, 공감, 협업, 도전</span></div>
+      <div class="info-row"><strong>나의 가치</strong><span>배움과 소통을 통한 성장</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="container" id="about">
+  <div class="section-title">
+    <small>02 · ABOUT ME</small>
+    <h2>About Me</h2>
+    <p>배우고 경험하며 성장하는 사람</p>
+  </div>
+  <div class="about-box">
+    저는 새로운 것을 배우고 다양한 사람들과 교류하며 성장하는 것을 좋아합니다.
+    간호학을 공부하면서 단순히 지식을 습득하는 것을 넘어,
+    <strong>사람의 건강과 삶을 이해하고 실질적인 도움을 주는 일</strong>에
+    의미를 느끼고 있습니다.<br><br>
+    학업뿐 아니라 교내 활동과 팀 프로젝트에도 적극적으로 참여하며
+    서로 다른 생각을 나누고 함께 결과물을 만들어 가는 과정의 중요성을
+    배워가고 있습니다. 익숙한 것에 머무르기보다 새로운 경험에 도전하며
+    저만의 역량을 넓혀가는 것이 저의 성장 방식입니다.
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section class="container" id="interests">
+  <div class="section-title">
+    <small>03 · INTERESTS</small>
+    <h2>My Interests</h2>
+    <p>간호와 기술, 사람을 연결하는 관심 분야</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🩺</div>
+      <h3>간호학 및 의료 분야</h3>
+      <p>환자의 건강 회복과 삶의 질 향상을 위한 전문적인 간호 지식에 관심이 있습니다. 환자의 상태를 세심하게 관찰하고 근거에 기반한 간호를 제공하는 방법을 배우고 있습니다.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🎬</div>
+      <h3>디지털 콘텐츠 제작</h3>
+      <p>유튜브 쇼츠처럼 짧고 직관적인 콘텐츠를 통해 복잡한 정보를 쉽고 효과적으로 전달하는 방법에 관심이 있습니다.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>건강교육</h3>
+      <p>전문적인 건강 정보를 누구나 이해하기 쉬운 언어로 전달하고, 대상자가 스스로 건강을 관리할 수 있도록 돕는 교육에 관심이 있습니다.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>디지털 헬스케어</h3>
+      <p>인공지능과 디지털 기술이 의료 현장에 적용되는 방식에 관심이 있습니다. 기술을 활용해 간호의 효율성과 환자 안전을 함께 높이는 방법을 탐구하고 싶습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="container" id="strengths">
+  <div class="section-title">
+    <small>04 · STRENGTHS</small>
+    <h2>My Strengths</h2>
+    <p>저를 성장하게 만드는 네 가지 강점</p>
+  </div>
+  <div class="strength-grid">
+    <div class="strength">
+      <div class="icon">🎯</div>
+      <h3>책임감</h3>
+      <p>맡은 역할을 끝까지 수행하고 꾸준히 노력하는 태도</p>
+    </div>
+    <div class="strength">
+      <div class="icon">💙</div>
+      <h3>공감 능력</h3>
+      <p>상대방의 입장에서 생각하고 마음을 이해하려는 자세</p>
+    </div>
+    <div class="strength">
+      <div class="icon">🤝</div>
+      <h3>협업 능력</h3>
+      <p>다양한 의견을 존중하며 공동의 목표를 이루는 능력</p>
+    </div>
+    <div class="strength">
+      <div class="icon">🚀</div>
+      <h3>도전정신</h3>
+      <p>익숙하지 않은 분야에도 적극적으로 도전하는 태도</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="container" id="experience">
+  <div class="section-title">
+    <small>05 · MY ACTIVITIES</small>
+    <h2>Beyond the Classroom</h2>
+    <p>교실 밖에서 배우고 경험한 것들</p>
+  </div>
+  <div class="experience">
+    <div class="experience-item">
+      <div class="exp-icon">📋</div>
+      <div>
+        <h3>간호학 학술동아리 활동</h3>
+        <p>기획구성부 활동을 통해 학술 활동을 계획하고 구성하며 조직 내 협업과 책임감을 배워가고 있습니다.</p>
+      </div>
+    </div>
+    <div class="experience-item">
+      <div class="exp-icon">🎓</div>
+      <div>
+        <h3>건강교육 및 콘텐츠 제작</h3>
+        <p>건강교육과 손 위생 관련 콘텐츠 제작 활동을 통해 정확한 정보를 효과적으로 전달하는 방법을 고민했습니다.</p>
+      </div>
+    </div>
+    <div class="experience-item">
+      <div class="exp-icon">💬</div>
+      <div>
+        <h3>정신건강 관련 봉사 및 교류</h3>
+        <p>정신건강 관련 기관에서의 교육·교류 활동을 통해 대상자의 입장에서 생각하고 소통하는 경험을 쌓았습니다.</p>
+      </div>
+    </div>
+    <div class="experience-item">
+      <div class="exp-icon">🏥</div>
+      <div>
+        <h3>응급실 간호사 인터뷰 프로젝트</h3>
+        <p>응급실 간호사의 실제 업무와 경험을 알아보며 간호사의 전문성, 현장 대응 능력과 직업적 책임에 대해 생각해 보았습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NURSING PHILOSOPHY -->
+<section class="container">
+  <div class="philosophy">
+    <div class="quote">“</div>
+    <h2>기술은 간호를 발전시키지만,<br>간호를 완성하는 것은 사람입니다.</h2>
+    <p>
+      의료 기술이 발전할수록 간호사는 더 많은 정보를 활용하고
+      효율적으로 환자를 돌볼 수 있습니다.
+      그러나 환자가 느끼는 불안과 두려움을 이해하고
+      마음을 나누는 일은 여전히 사람의 몫이라고 생각합니다.
+      저는 전문성과 인간적인 공감이 조화를 이루는 간호를 실천하고 싶습니다.
+    </p>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section class="container" id="hobbies">
+  <div class="section-title">
+    <small>06 · HOBBIES</small>
+    <h2>My Hobbies</h2>
+    <p>일상에 즐거움과 활력을 더하는 시간</p>
+  </div>
+  <div class="hobbies">
+    <div class="hobby">
+      <div class="icon">🎧</div>
+      <h3>음악 감상</h3>
+      <p>음악으로 일상에 활력을</p>
+    </div>
+    <div class="hobby">
+      <div class="icon">✈️</div>
+      <h3>여행</h3>
+      <p>새로운 장소와 문화 경험</p>
+    </div>
+    <div class="hobby">
+      <div class="icon">🏋️</div>
+      <h3>운동</h3>
+      <p>꾸준한 운동과 자기관리</p>
+    </div>
+    <div class="hobby">
+      <div class="icon">🍳</div>
+      <h3>요리</h3>
+      <p>직접 만들고 맛보는 즐거움</p>
+    </div>
+  </div>
+</section>
+
+<!-- COOKING -->
+<section class="container" id="cooking">
+  <div class="section-title">
+    <small>07 · MY COOKING</small>
+    <h2>Cooking Moments</h2>
+    <p>재료를 고르고, 직접 만들며 즐기는 나만의 시간</p>
+  </div>
+
+  <div class="cooking">
+    <p class="cooking-intro">
+      요리는 저에게 단순히 음식을 만드는 것을 넘어 새로운 조합을 시도하고
+      나만의 결과물을 만들어 가는 취미입니다.
+    </p>
+
+    <div class="food-grid">
+
+      <div class="food-card">
+        <div class="food-visual">
+          <img src="witch.jpg" alt="직접 만든 마녀수프">
+        </div>
+        <div class="food-info">
+          <h3>마녀수프</h3>
+          <p>다양한 채소를 넣어 푹 끓여낸 건강하고 든든한 한 끼</p>
+          <span class="food-label">VEGETABLE SOUP</span>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <div class="food-visual">
+          <img src="bisi.jpg" alt="직접 만든 비지찌개">
+        </div>
+        <div class="food-info">
+          <h3>비지찌개</h3>
+          <p>고소한 비지의 풍미를 살린 따뜻하고 구수한 집밥</p>
+          <span class="food-label">KOREAN HOME COOKING</span>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <div class="food-visual">
+          <img src="chicken.jpg" alt="직접 만든 닭다리살전골">
+        </div>
+        <div class="food-info">
+          <h3>닭다리살전골</h3>
+          <p>부드러운 닭다리살과 채소를 함께 즐기는 든든한 전골</p>
+          <span class="food-label">HOT POT</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAVORITE PERSON -->
+<section class="container" id="favorite">
+  <div class="section-title">
+    <small>08 · MY FAVORITE</small>
+    <h2>Someone I Like</h2>
+    <p>제가 좋아하는 사람과 그 이유</p>
+  </div>
+
+  <div class="favorite">
+    <div>
+      <div class="favorite-label">MY FAVORITE STAR</div>
+      <h2>안유진</h2>
+      <h3>IVE · YUJIN</h3>
+      <p>
+        예능 프로그램 '뿅뿅 지구오락실'에서 보여준
+        밝고 유쾌한 에너지와 재치 있는 모습이 매력적이라고 생각합니다.
+        어떤 상황에서도 자신감 있고 활기찬 모습을 보여주는 점이
+        인상적입니다.
+      </p>
+      <p class="favorite-note">
+        좋아하는 아티스트를 소개하는 나만의 공간
+      </p>
+    </div>
+
+    <div class="favorite-photo">
+    
+     
+      <span>AN YUJIN PHOTO</span>
+      <span><img src="pretty.jpg" alt="안유진 사진"> </span>
+       
+    </div>
+  </div>
+</section>
+<!-- POKEMON -->
+<section class="container pokemon-section" id="pokemon">
+  <div class="section-title">
+    <small>MY FAVORITE CHARACTER</small>
+    <h2>My Favorite Pokémon</h2>
+    <p>제가 좋아하는 또 하나의 작은 즐거움</p>
+  </div>
+
+  <div class="pokemon-card">
+    <div class="pokemon-image">
+      <img src="cute.jpg" alt="내 최애 포켓몬 피카츄">
+    </div>
+
+    <div class="pokemon-info">
+      <span class="food-label">POKÉMON LOVER</span>
+      <h3>피카츄 ⚡</h3>
+      <p>
+        저는 포켓몬을 좋아합니다.
+        다양한 포켓몬 중에서도 가장 좋아하는 포켓몬은 피카츄입니다.
+        귀여운 외모와 밝고 활기찬 모습이 매력적이라고 생각합니다.
+      </p>
+      <span class="pokemon-label">MY FAVORITE POKÉMON</span>
+    </div>
+  </div>
+</section>
+<!-- GOAL -->
+<section class="container" id="goal">
+  <div class="goal">
+    <small>09 · MY GOAL</small>
+    <div class="english">TECHNOLOGY WITH HUMANITY</div>
+    <h2>디지털 기술과 따뜻한 공감 능력을<br>겸비한 간호사</h2>
+    <p>
+      앞으로 의료 분야의 디지털 기술과 전문적인 간호 지식을
+      꾸준히 배우고 발전시키고 싶습니다.
+      하지만 기술이 발전하더라도 간호의 중심에는 언제나
+      사람이 있어야 한다고 생각합니다.<br><br>
+      환자의 작은 변화에도 관심을 기울이고,
+      환자의 입장에서 생각하며 신뢰를 쌓는 간호사가 되고 싶습니다.
+      끊임없이 배우고 도전하면서 전문성과 인간적인 따뜻함을
+      모두 갖춘 간호사로 성장하겠습니다.
+    </p>
+    <div class="goal-keywords">
+      <span>Professionalism</span>
+      <span>Empathy</span>
+      <span>Innovation</span>
+      <span>Trust</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 KANG WONTAE · PERSONAL PORTFOLIO
+  <br>Learning · Empathy · Growth
+</footer>
+
+</body>
+</html>
